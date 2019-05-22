@@ -6,6 +6,8 @@ It's ok. We've all been there. Thankfully, you're using Git, so going back and r
 
 If the statement above doesn't match your VCS confidence, it's ok. That's why we're going to go over some git backtracking strategies.
 
+(Use the `example.md` file in the `examples` branch to test some things we're talking about)
+
 ## Undoing things
 Let's say you're writing code and introduce a bug, or just generally making things worse. These commands are for you.
 
