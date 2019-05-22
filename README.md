@@ -12,19 +12,19 @@ If the statement above doesn't match your VCS confidence, it's ok. That's why we
 Let's say you're writing code and introduce a bug, or just generally making things worse. These commands are for you.
 
 ### Fixing the previous commit 
-Adding the `--ammend` flag to a commit will change the most recent commit.
+Adding the `--amend` flag to a commit will change the most recent commit.
 ```bash
-git commit --ammend -m "This is the correct commit message"
+git commit --amend -m "This is the correct commit message"
 ```
 
 Doing this with _no staged changes_ will simply rewrite the commit message. If you want to change the contents of the most recent commit as well, you can stage any changes and run the command as well. 
 
 ```bash 
 git add file_to_update.txt
-git commit --ammend -m "This is the correct commit, and a file has been updated"
+git commit --amend -m "This is the correct commit, and a file has been updated"
 ```
 
-__Warning:__ Do not ammend commits that have been published to your remote. This can cause problems for any people who have begun work based off of the most recently published commit.
+__Warning:__ Do not amend commits that have been published to your remote. This can cause problems for any people who have begun work based off of the most recently published commit.
 
 ### Undoing local changes 
 
@@ -152,5 +152,5 @@ index dbfaf94..1e591bc 100644 # FILE METADATA
 
 ## Dig Deeper
 This lesson was largely pulled from teh follow two sites:
-[git docs](https://git-scm.com/)
-[git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
+* [git docs](https://git-scm.com/)
+* [git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
