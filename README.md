@@ -1,6 +1,6 @@
 # Git Backtracking 
 
-So, you messed up.
+So, you fucked up.
 
 It's ok. We've all been there. Thankfully, you're using Git, so going back and reverseing these changes should be easy as pie, right?
 
@@ -53,9 +53,31 @@ git reset --hard HEAD
 ```
 Using the `--hard` flag will reset everything to the previous commit, removing any changes from the working area. This hard reset is __unreversable__.
 
-### Undoing committed changes
+### Rolling back committed changes
 
 All of the above commands work with undoing commited changes as well, only as opposed to passing them HEAD as an argument, you pass the commit hash you want to turn back to. Let's take a look at some options for reverting to old commits. 
+
+#### `revert` vs `reset`
+
+```bash
+$ git revert commit_hash
+```
+
+```bash
+$ git reset commit_hash
+# The --hard flag will delete all rolled back changes 
+# The --keep flag will keep them in your working area 
+```
+
+`reset` and `revert` do very similar operations, with one important difference:
+* `revert` will make a new commit where the code is turned back to where it was at `commit_hash`
+* `reset` will erase any commits between the previous HEAD and `commit_hash`
+  * If you use the `--keep` flag, the rolled back changes will appear as local changes in your working directory
+  * Just like when undoing local changes, the `--soft` flag will keep the rolled back changes in the staging area
+
+Becuase `reset` removes all previous commits and access to rolled back revisions of our files, `revert` is typically a safer bet for rolling back multiple commmits.
+
+#### Check it out! 
 
 ```bash
 $ git checkout commit_hash
@@ -71,3 +93,39 @@ We can reaccess these commits by calling on their specific hashes, but that's pr
 ```bash 
 $ git checkout -b test-branch commit_hash
 ```
+
+## Comparing commits / changes 
+
+So maybe you didn't fuck up. Or maybe you just need to compare old versions of a file. Or maybe you just want to remember what will get added to your next commit. Luckily git provides us with a nice and easy way to make these comparisons.
+
+```bash
+$ git log 
+```
+[git log](https://git-scm.com/docs/git-log) will output the commit history in our local repository. We can use this to view commit messages, as well as see data about our revisions.
+* Using the `--oneline` flag will give us an abbreviated output (commit messages, shortened hashes, remote and local HEAD locations)
+* Using the `--patch` or `-p` flag will generate a [patch / diff](https://git-scm.com/docs/diff-generate-patch), or information about the modified parts of each file (aka _chunks_), in our log as well. This give us an easy way to see the differences between all our displayed revisions.
+
+We can also generate a patch between two specific commits with [git diff](https://git-scm.com/docs/git-diff).
+```bash
+$ git diff 
+```
+ Without any arguments, `git diff` will produce a patch between your local changes and the most recent commit 
+
+```bash
+$ git diff commit_hash_one commit_hash_two
+```
+With two commit hashes as arguments, `git diff` will generate a patch comparing two revisions
+
+```bash
+$ git diff branch_one branch_two
+```
+With two branches as arguments, we can generate a patch compoaring the most recent commits on each branch 
+
+### Reading Patches 
+Even though we know how to generate patches, reading them can be a bit overwhelming. Let's take a deeper look at what these big outputs mean.
+
+
+## Dig Deeper
+This lesson was largely pulled from teh follow two sites:
+[git docs](https://git-scm.com/)
+[git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
