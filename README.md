@@ -150,5 +150,5 @@ index dbfaf94..1e591bc 100644 # FILE METADATA
 
 ## Dig Deeper
 This lesson was largely pulled from teh follow two sites:
-[git docs](https://git-scm.com/)
-[git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
+* [git docs](https://git-scm.com/)
+* [git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
