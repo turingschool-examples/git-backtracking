@@ -1,1 +1,1 @@
-Add series of small commits to show how to navigate between versions 
+This file is meant to demonstrate how to use git backtracking. Have fun!
