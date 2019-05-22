@@ -93,3 +93,30 @@ We can reaccess these commits by calling on their specific hashes, but that's pr
 ```bash 
 $ git checkout -b test-branch commit_hash
 ```
+
+## Comparing commits / changes 
+
+So maybe you didn't fuck up. Or maybe you just need to compare old versions of a file. Or maybe you just want to remember what will get added to your next commit. Luckily git provides us with a nice and easy way to make these comparisons.
+
+```bash
+$ git log 
+```
+[git log](https://git-scm.com/docs/git-log) will output the commit history in our local repository. We can use this to view commit messages, as well as see data about our revisions.
+* Using the `--oneline` flag will give us an abbreviated output (commit messages, shortened hashes, remote and local HEAD locations)
+* Using the `--patch` or `-p` flag will generate a [patch / diff](https://git-scm.com/docs/diff-generate-patch), or information about the modified parts of each file, in our log as well. This give us an easy way to see the differences between all our displayed revisions.
+
+We can also generate a patch between two specific commits with [git diff](https://git-scm.com/docs/git-diff).
+```bash
+$ git diff 
+```
+ Without any arguments, `git diff` will produce a patch between your local changes and the most recent commit 
+
+```bash
+$ git diff commit_hash_one commit_hash_two
+```
+With two commit hashes as arguments, `git diff` will generate a patch comparing two revisions
+
+```bash
+$ git diff branch_one branch_two
+```
+With two branches as arguments, we can generate a patch compoaring the most recent commits on each branch 
