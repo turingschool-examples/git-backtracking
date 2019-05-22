@@ -151,6 +151,6 @@ index dbfaf94..1e591bc 100644 # FILE METADATA
 * Anything with a `-` was changed in file a (the old version). Anything with a `+` was added in file b
 
 ## Dig Deeper
-This lesson was largely pulled from the follow two sites:
+This lesson was largely pulled from the following two sites:
 * [git docs](https://git-scm.com/)
 * [git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
