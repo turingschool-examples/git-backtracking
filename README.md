@@ -1,6 +1,6 @@
 # Git Backtracking 
 
-So, you messed up.
+So, you fucked up.
 
 It's ok. We've all been there. Thankfully, you're using Git, so going back and reverseing these changes should be easy as pie, right?
 
@@ -53,9 +53,31 @@ git reset --hard HEAD
 ```
 Using the `--hard` flag will reset everything to the previous commit, removing any changes from the working area. This hard reset is __unreversable__.
 
-### Undoing committed changes
+### Rolling back committed changes
 
 All of the above commands work with undoing commited changes as well, only as opposed to passing them HEAD as an argument, you pass the commit hash you want to turn back to. Let's take a look at some options for reverting to old commits. 
+
+#### `revert` vs `reset`
+
+```bash
+$ git revert commit_hash
+```
+
+```bash
+$ git reset commit_hash
+# The --hard flag will delete all rolled back changes 
+# The --keep flag will keep them in your working area 
+```
+
+`reset` and `revert` do very similar operations, with one important difference:
+* `revert` will make a new commit where the code is turned back to where it was at `commit_hash`
+* `reset` will erase any commits between the previous HEAD and `commit_hash`
+  * If you use the `--keep` flag, the rolled back changes will appear as local changes in your working directory
+  * Just like when undoing local changes, the `--soft` flag will keep the rolled back changes in the staging area
+
+Becuase `reset` removes all previous commits and access to rolled back revisions of our files, `revert` is typically a safer bet for rolling back multiple commmits.
+
+#### Check it out! 
 
 ```bash
 $ git checkout commit_hash
