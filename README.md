@@ -34,7 +34,7 @@ This command moves our HEAD pointer (the version of our code / files our present
 ```bash
 git checkout HEAD file_to_undo.txt
 ```
-This will revert `file_to_undo.txt` to its last committed version. This allows you to selectively discard uncommited changes to specific files. 
+This will revert `file_to_undo.txt` (working area included) to its last committed version. This allows you to selectively discard uncommited changes to specific files.
 
 If we want to undo all changes in the working directory to the most recent commit, we can use `git reset`
 
@@ -53,3 +53,21 @@ git reset --hard HEAD
 ```
 Using the `--hard` flag will reset everything to the previous commit, removing any changes from the working area. This hard reset is __unreversable__.
 
+### Undoing committed changes
+
+All of the above commands work with undoing commited changes as well, only as opposed to passing them HEAD as an argument, you pass the commit hash you want to turn back to. Let's take a look at some options for reverting to old commits. 
+
+```bash
+$ git checkout commit_hash
+
+Note: checking out to commit_hash
+You are in a 'detached HEAD' state...
+```
+
+While we have successfully moved our HEAD to look at an old commit, we've put ourselves in a bit of an odd spot. A detached HEAD state refers to the HEAD not pointing to an existing branch. This means that any commits made in this state will not belong to a branch, and will thus be easily loseable (especially if we swtich to a new branch). 
+
+We can reaccess these commits by calling on their specific hashes, but that's pretty hard to remember. A better solution is to checkout to a new branch when we check out an old commit, then we can safely experiment in a new feature or test branch.
+
+```bash 
+$ git checkout -b test-branch commit_hash
+```
