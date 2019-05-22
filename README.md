@@ -103,7 +103,7 @@ $ git log
 ```
 [git log](https://git-scm.com/docs/git-log) will output the commit history in our local repository. We can use this to view commit messages, as well as see data about our revisions.
 * Using the `--oneline` flag will give us an abbreviated output (commit messages, shortened hashes, remote and local HEAD locations)
-* Using the `--patch` or `-p` flag will generate a [patch / diff](https://git-scm.com/docs/diff-generate-patch), or information about the modified parts of each file, in our log as well. This give us an easy way to see the differences between all our displayed revisions.
+* Using the `--patch` or `-p` flag will generate a [patch / diff](https://git-scm.com/docs/diff-generate-patch), or information about the modified parts of each file (aka _chunks_), in our log as well. This give us an easy way to see the differences between all our displayed revisions.
 
 We can also generate a patch between two specific commits with [git diff](https://git-scm.com/docs/git-diff).
 ```bash
@@ -120,3 +120,12 @@ With two commit hashes as arguments, `git diff` will generate a patch comparing 
 $ git diff branch_one branch_two
 ```
 With two branches as arguments, we can generate a patch compoaring the most recent commits on each branch 
+
+### Reading Patches 
+Even though we know how to generate patches, reading them can be a bit overwhelming. Let's take a deeper look at what these big outputs mean.
+
+
+## Dig Deeper
+This lesson was largely pulled from teh follow two sites:
+[git docs](https://git-scm.com/)
+[git tower tutorial (use the command line instructions)](https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/undoing-things#start)
